@@ -8,7 +8,7 @@ public class Usuario : IdentityUser
     public string? Nombre { get; set; }
     public string? Apellidos { get; set; }
     [DataType(DataType.Date)]
-    public DateTime FechaNacimiento { get; set; }
+    public DateTime? FechaNacimiento { get; set; }
     public string ? Telefono { get; set; }
     public string? Descripcion { get; set; } //presentacion del usuario - ingreso personal
 

@@ -8,28 +8,68 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Loop_Patin.styles.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Loop_Patin</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+       <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
+           <div class="container">
+              <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                  <svg fill="none" height="32" style="color: var(--primary-coral);" viewBox="0 0 48 48" width="32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+                  </svg>
+                   <span class="fw-bolder fs-4">Loop Academy</span>
+              </a>
+              <button class="navbar-toggler" data-bs-target="#navbarNav" data-bs-toggle="collapse" type="button">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+              </button>
+                <div class="collapse navbar-collapse " id="navbarNav">
+                        <ul class="navbar-nav mx-auto justify-content-between">
+                            <li class="nav-item"><a class="nav-link px-3 fw-semibold" href="#">Clases</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-semibold" href="#">Sedes</a></li>
+                            <li class="nav-item"><a class="nav-link px-3 fw-semibold" href="#">Nosotros</a></li>
+                        </ul>                
+                    <ul class="navbar-nav ms-auto d-flex flex-column flex-lg-row align-items-start align-items-lg-center">
+                        
+                            @if (User.Identity != null && User.Identity.IsAuthenticated)
+                            {
+                            <li class="nav-item mb-2 mb-lg-0 ms-lg-3">
+                                <span class="btn btn-outline-primary rounded-pill px-3 px-lg-4">
+                                    Hola! 👋 @* @User.Identity.Name *@
+                                    </span>
+                                </li>
+                            <li class="nav-item mb-2 mb-lg-0 ms-lg-3">
+                                    <form asp-controller="Account" asp-action="Logout" method="post">
+                                    <button type="submit" class="btn btn-outline-primary rounded-pill px-3 px-lg-4">
+                                            Cerrar sesión
+                                        </button>
+                                    </form>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item ms-lg-3">
+                                <a class="flex-column flex-lg-row btn btn-outline-primary rounded-pill px-4"
+                                       asp-controller="Account"
+                                       asp-action="Login">
+                                        Iniciar sesión
+                                    </a>
+                                </li>
+                            <li class="flex-column flex-lg-row nav-item ms-lg-3" ">
+                                    <a class="btn btn-outline-primary rounded-pill px-4"
+                                       asp-controller="Account"
+                                       asp-action="Register">
+                                        Registrarse
+                                    </a>
+                                </li>
+                            }
+                        </ul>
                 </div>
-            </div>
-        </nav>
+           </div>           
+        </nav>  
     </header>
     <div class="container">
         <main role="main" class="pb-3">
