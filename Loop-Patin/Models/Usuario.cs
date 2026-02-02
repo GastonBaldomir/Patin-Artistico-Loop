@@ -10,6 +10,9 @@ public class Usuario : IdentityUser
     [DataType(DataType.Date)]
     public DateTime? FechaNacimiento { get; set; }
     public string ? Telefono { get; set; }
+    public string? Dni { get; set; }
+    public string? Direccion { get; set; }
+    public bool? Estado { get; set; } = true; // activo/inactivo    
     public string? Descripcion { get; set; } //presentacion del usuario - ingreso personal
 
     // Datos específicos del club/deporte

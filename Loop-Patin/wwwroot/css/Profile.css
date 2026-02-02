@@ -1,0 +1,118 @@
+﻿:root {
+    --bs-primary: #3AE0BE;
+    --bs-primary-rgb: 58, 224, 190;
+    --primary-dark: #207A68;
+    --primary-dark-hover: #17574A;
+    --accent-soft: #3CE8C6;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    border-bottom: 1px solid #dee2e6;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    color: #000;
+    font-weight: 600;
+}
+
+    .btn-primary:hover {
+        background-color: #31BDA1;
+        border-color: #31BDA1;
+        color: #000;
+    }
+
+.btn-save {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    color: #fff;
+}
+
+    .btn-save:hover {
+        background-color: var(--primary-dark-hover);
+        border-color: var(--primary-dark-hover);
+        color: #fff;
+    }
+
+.form-control:focus, .form-select:focus {
+    border-color: #31BDA1;
+    box-shadow: 0 0 0 0.25rem rgba(49, 189, 161, 0.25);
+}
+
+.profile-picture-container {
+    position: relative;
+    width: 150px;
+    margin: 0 auto;
+}
+.btn-camera {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; 
+    color: var(--primary-coral);
+    cursor: pointer;
+}
+
+    .btn-camera:hover {
+        background-color: var(--soft-accent);
+    }
+
+.img-thumbnail.rounded-circle {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 4px solid var(--bs-primary);
+}
+
+.btn-camera {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: var(--accent-soft);
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.sidebar-item {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+}
+
+.material-symbols-outlined {
+    vertical-align: middle;
+    font-size: 20px;
+}
+
+.text-primary-custom {
+    color: var(--primary-dark);
+}
+
+.badge-active {
+    background-color: rgba(58, 224, 190, 0.2);
+    color: #17574A;
+    font-weight: 700;
+}

@@ -17,7 +17,7 @@
     <header>
        <nav class="navbar navbar-expand-lg navbar-light sticky-top py-3">
            <div class="container">
-              <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+              <a asp-controller="Home" asp-action="Index"  class="navbar-brand d-flex align-items-center gap-2" >
                   <svg fill="none" height="32" style="color: var(--primary-coral);" viewBox="0 0 48 48" width="32" xmlns="http://www.w3.org/2000/svg">
                     <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
                   </svg>
@@ -36,6 +36,13 @@
                         
                             @if (User.Identity != null && User.Identity.IsAuthenticated)
                             {
+                            <li class="nav-item mb-2 mb-lg-0 ms-lg-3">
+                                <a class="nav-link btn btn-outline-primary rounded-pill px-3 px-lg-4"
+                                   asp-controller="Profile"
+                                   asp-action="Index">
+                                    Mi Perfil
+                                </a>
+                            </li>
                             <li class="nav-item mb-2 mb-lg-0 ms-lg-3">
                                 <span class="btn btn-outline-primary rounded-pill px-3 px-lg-4">
                                     Hola! 👋 @* @User.Identity.Name *@
@@ -59,12 +66,11 @@
                                     </a>
                                 </li>
                             <li class="flex-column flex-lg-row nav-item ms-lg-3" ">
-                                    <a class="btn btn-outline-primary rounded-pill px-4"
-                                       asp-controller="Account"
-                                       asp-action="Register">
-                                        Registrarse
-                                    </a>
-                                </li>
+                                <a class="btn btn-outline-primary rounded-pill px-4"
+                                    asp-controller="Account"
+                                    asp-action="Register">Registrarse
+                                </a>
+                             </li>
                             }
                         </ul>
                 </div>
