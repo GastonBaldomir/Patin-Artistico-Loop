@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Panel de Administración - Escuela de Patín</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+    <link href="~/css/admin.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    @*  *@
+    <main class="py-5">
+        <div class="container">
+           @*  <div class="row align-items-center mb-5">
+                <div class="col-md-8">
+                    <h1 class="display-5 fw-black mb-1">Welcome Administrator</h1>
+                    <p class="text-muted fs-5">Gestión integral de la escuela de patinaje</p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <span class="status-badge">System Status: Online</span>
+                </div>
+            </div> *@
+            <h2 class="h4 fw-bold mb-4 d-flex align-items-center gap-2">
+                <span class="material-symbols-outlined" style="color: var(--primary-color);">dashboard_customize</span>
+                Acciones de Administración
+            </h2>
+            <div class="row g-4 mb-5">
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="icon-box bg-primary-light">
+                                    <span class="material-symbols-outlined fs-2">folder</span>
+                                </div>
+                                <small class="text-muted fw-medium">7 Categorías Activas</small>
+                            </div>
+                            <h5 class="card-title fw-bold mb-2">Gestión de Categorías</h5>
+                            <p class="card-text text-muted small mb-4">Administre los niveles y grupos de patín por edades y destrezas.</p>
+                            <div class="d-grid gap-2">
+                              
+                                <a asp-controller="Categoria" asp-action="Index" class="btn btn-primary-custom d-flex align-items-center justify-content-center gap-2">
+                                    <span class="material-symbols-outlined fs-6">add_circle</span> Administar Categorías
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="icon-box bg-red-light">
+                                    <span class="material-symbols-outlined fs-2">speaker_phone</span>
+                                </div>
+                                <small class="text-muted fw-medium">3 Borradores</small>
+                            </div>
+                            <h5 class="card-title fw-bold mb-2">Noticias y Novedades</h5>
+                            <p class="card-text text-muted small mb-4">Publique anuncios, eventos y actualizaciones para toda la comunidad.</p>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary-custom d-flex align-items-center justify-content-center gap-2">
+                                    <span class="material-symbols-outlined fs-6">edit_square</span> Crear Noticia
+                                </button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div class="icon-box bg-blue-light">
+                                    <span class="material-symbols-outlined fs-2">group</span>
+                                </div>
+                                <small class="text-muted fw-medium">142 Alumnas</small>
+                            </div>
+                            <h5 class="card-title fw-bold mb-2">Alumnado</h5>
+                            <p class="card-text text-muted small mb-4">Control de inscripciones, registros personales y seguimiento de asistencia.</p>
+                            <div class="d-grid gap-2">
+                                <a asp-controller="Alumna" asp-action="Index" class="btn btn-primary-custom d-flex align-items-center justify-content-center gap-2">
+                                    <span class="material-symbols-outlined fs-6">add_circle</span>Listado de Alumnas
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</body>

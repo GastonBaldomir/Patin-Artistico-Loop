@@ -17,18 +17,80 @@ namespace Loop_Patin.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
+
         // GET: /Account/Login
         public IActionResult Login()
         {
+
             return View();
         }
 
         // GET: /Account/Register
+        [HttpGet]
         public IActionResult Register()
         {
-            return View();
+            var model = new RegisterViewModel
+            {
+                RolesDisponibles = new List<string>
+        {
+            "Padre/Tutor",
+            "Patinadora"
+        }
+            };
+
+            return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                // IMPORTANTE: volver a cargar los roles
+                model.RolesDisponibles = new List<string>
+                {
+                    "Padre/Tutor",
+                    "Patinadora"
+                };
+
+                return View(model);
+            }
+
+            var user = new Usuario
+            {
+                UserName = model.Email,
+                Email = model.Email,
+                FechaRegistro = DateTime.Now
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                // Asignar rol elegido
+                await _userManager.AddToRoleAsync(user, model.RolSeleccionado);
+
+                await _signInManager.SignInAsync(user, isPersistent: false);
+                return RedirectToAction("Index", "Home");
+            }
+
+            // Si falla la creación, mostrar errores
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError(string.Empty, error.Description);
+            }
+
+            // Volver a cargar roles antes de devolver la vista
+            model.RolesDisponibles = new List<string>
+            {
+                "Padre/Tutor",
+            "Patinadora"
+            };
+
+            return View(model);
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -49,35 +111,7 @@ namespace Loop_Patin.Controllers
             ModelState.AddModelError("", "Usuario o contraseña incorrectos");
             return View(model);
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model)
-        {
-            if (!ModelState.IsValid)
-                return View(model);
 
-            var user = new Usuario
-            {
-                UserName = model.Email,
-                Email = model.Email,
-                FechaRegistro = DateTime.Now
-            };
-
-            var result = await _userManager.CreateAsync(user, model.Password);
-
-            if (result.Succeeded)
-            {
-                await _signInManager.SignInAsync(user, isPersistent: false);
-                return RedirectToAction("Index", "Home");
-            }
-
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError(string.Empty, error.Description);
-            }
-
-            return View(model);
-        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()

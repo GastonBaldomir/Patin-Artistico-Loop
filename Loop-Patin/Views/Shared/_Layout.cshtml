@@ -19,7 +19,7 @@
            <div class="container">
               <a asp-controller="Home" asp-action="Index"  class="navbar-brand d-flex align-items-center gap-2" >
                   <svg fill="none" height="32" style="color: var(--primary-coral);" viewBox="0 0 48 48" width="32" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+                        <span class="material-symbols-outlined fs-2"></span>
                   </svg>
                    <span class="fw-bolder fs-4">Loop Academy</span>
               </a>
@@ -44,9 +44,16 @@
                                 </a>
                             </li>
                             <li class="nav-item mb-2 mb-lg-0 ms-lg-3">
-                                <span class="btn btn-outline-primary rounded-pill px-3 px-lg-4">
+                                @if (User.IsInRole("Admin"))
+                                {
+                                    <a asp-controller="Admin" asp-action="Index" class="nav-link">
+                                        <span class="material-symbols-outlined">admin_panel_settings</span>
+                                        Admin
+                                    </a>
+                                }else{ <span class="btn btn-outline-primary rounded-pill px-3 px-lg-4">
                                     Hola! 👋 @* @User.Identity.Name *@
-                                    </span>
+                                    </span>}
+                               
                                 </li>
                             <li class="nav-item mb-2 mb-lg-0 ms-lg-3">
                                     <form asp-controller="Account" asp-action="Logout" method="post">

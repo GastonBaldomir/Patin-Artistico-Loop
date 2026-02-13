@@ -17,5 +17,10 @@ namespace Loop_Patin.Models
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Las contraseñas no coinciden")]
         public string ConfirmPassword { get; set; }
+
+        [Required(ErrorMessage = "Debe seleccionar un tipo de cuenta")]
+        public string RolSeleccionado { get; set; }
+
+        public List<string> RolesDisponibles { get; set; } = new();
     }
 }
